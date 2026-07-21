@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salah Laouina · Data &amp; Finance</title>
+<meta name="description" content="Portfolio Data &amp; Finance de Salah Laouina : automatisation de contrôles comptables, préconsolidation, dématérialisation. Master CCA, Power BI, VBA, 7 certifications Deloitte IFRS.">
+<meta property="og:title" content="Salah Laouina · Data &amp; Finance">
+<meta property="og:description" content="Comptable de formation, data par appétence. Automatisation, préconsolidation, Power BI, IA.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2316181D'/%3E%3Ctext x='50' y='69' font-size='50' font-family='Georgia,serif' font-weight='bold' fill='%23C4A35A' text-anchor='middle'%3ESL%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#16181D; --bg2:#101216; --panel:#1D2026; --panel2:#1A1C22;
+    --line:#2B2F38; --gold:#C4A35A; --gold-soft:#D8BE82; --gold-fade:rgba(196,163,90,.10);
+    --gold-bd:rgba(196,163,90,.35); --pearl:#ECEAE3; --grey:#9AA0AB;
+    --btn-text:#16181D; --navbg:rgba(16,18,22,.86); --shadow:rgba(0,0,0,.45);
+  }
+  body.day{
+    --bg:#F5F2EA; --bg2:#EFEBDF; --panel:#FFFFFF; --panel2:#FBF9F3;
+    --line:#E7E0D0; --gold:#9C7A33; --gold-soft:#B4913F; --gold-fade:rgba(156,122,51,.09);
+    --gold-bd:rgba(156,122,51,.32); --pearl:#23262C; --grey:#6a6f78;
+    --btn-text:#FFFFFF; --navbg:rgba(245,242,234,.9); --shadow:rgba(120,95,30,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--pearl);background:var(--bg);line-height:1.65;transition:background .3s,color .3s}
+  a{color:var(--gold-soft);text-decoration:none}
+  .wrap{max-width:920px;margin:0 auto;padding:0 22px}
+  .eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;font-weight:700;color:var(--gold)}
+
+  /* bascule de langue */
+  .en{display:none}
+  body.en-on .fr{display:none}
+  body.en-on .en{display:block}
+  span.en, body.en-on span.en{display:none}
+  body.en-on span.en{display:inline}
+  body.en-on span.fr{display:none}
+
+  nav{position:sticky;top:0;z-index:30;background:var(--navbg);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  nav .brand{font-family:Georgia,serif;font-weight:700;color:var(--pearl);letter-spacing:.5px;font-size:1.08rem}
+  nav .brand b{color:var(--gold)}
+  nav .right{display:flex;align-items:center;gap:12px}
+  nav .back{color:var(--grey);font-size:.84rem;font-weight:600}
+  nav .back:hover{color:var(--gold)}
+  .tgl{background:transparent;color:var(--gold);border:1px solid var(--gold);border-radius:2px;padding:5px 11px;font-weight:700;font-size:.78rem;cursor:pointer;transition:.18s;letter-spacing:.08em}
+  .tgl:hover{background:var(--gold);color:var(--btn-text)}
+
+  header.hero{background:radial-gradient(1100px 460px at 80% -10%,var(--gold-fade),transparent 60%),linear-gradient(180deg,var(--bg2),var(--bg));padding:60px 0 48px;border-bottom:1px solid var(--line)}
+  header.hero h1{font-family:Georgia,serif;font-size:2.5rem;line-height:1.14;margin:12px 0 6px}
+  header.hero .role{color:var(--gold);font-weight:700;font-size:1.02rem;letter-spacing:.02em}
+  header.hero .lead{color:var(--grey);margin-top:18px;max-width:660px;font-size:1.03rem}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--gold);border-radius:5px;padding:14px 16px}
+  .stat b{display:block;font-family:Georgia,serif;color:var(--gold);font-size:1.02rem}
+  .stat span.lbl{color:var(--grey);font-size:.82rem;display:block}
+  @media(max-width:760px){.stats{grid-template-columns:1fr 1fr}header.hero h1{font-size:2rem}}
+
+  section{padding:52px 0}
+  .alt{background:var(--panel2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  h2{font-family:Georgia,serif;font-size:1.55rem;font-weight:700}
+  h2 .u{display:block;width:46px;height:2px;background:var(--gold);margin:12px 0 22px}
+  .sub{color:var(--grey);margin-bottom:26px;max-width:640px}
+
+  .case{background:var(--panel);border:1px solid var(--line);border-left:2px solid var(--gold);border-radius:6px;padding:22px 24px;margin-bottom:16px}
+  .case h3{font-family:Georgia,serif;color:var(--pearl);font-size:1.1rem;margin-bottom:12px}
+  .case dl{display:grid;gap:9px}
+  .case dt{color:var(--gold);font-weight:700;font-size:.79rem;text-transform:uppercase;letter-spacing:.09em}
+  .case dd{color:var(--grey);font-size:.95rem}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:20px 22px}
+  .card h3{font-family:Georgia,serif;color:var(--gold);font-size:1.02rem;margin-bottom:10px}
+  .card ul{list-style:none}
+  .card li{position:relative;padding-left:16px;margin-bottom:7px;color:var(--grey);font-size:.93rem}
+  .card li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;background:var(--gold);border-radius:50%}
+
+  .note{background:var(--gold-fade);border:1px solid var(--gold-bd);border-radius:5px;padding:15px 18px;color:var(--grey);font-size:.92rem;margin-top:22px}
+
+  .certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+  .cert{display:flex;flex-direction:column;justify-content:space-between;background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--gold);border-radius:5px;padding:14px 16px;transition:.18s}
+  .cert:hover{border-color:var(--gold-bd);transform:translateY(-2px)}
+  .cert .t{color:var(--pearl);font-weight:700;font-size:.94rem}
+  .cert .d{color:var(--grey);font-size:.82rem;margin:4px 0 10px}
+  .cert .go{color:var(--gold);font-size:.82rem;font-weight:700}
+
+  .btnrow{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;justify-content:center}
+  .btn{display:inline-block;padding:12px 22px;border:1px solid var(--gold);border-radius:2px;color:var(--gold);font-weight:700;font-size:.9rem;transition:.18s}
+  .btn:hover{background:var(--gold);color:var(--btn-text)}
+  .btn.solid{background:var(--gold);color:var(--btn-text)}
+  .btn.solid:hover{background:var(--gold-soft)}
+
+  .contact{background:radial-gradient(760px 280px at 50% 0%,var(--gold-fade),transparent 60%),var(--panel);border:1px solid var(--line);border-radius:8px;padding:34px 26px;text-align:center}
+  .contact h2{margin-bottom:8px}
+  .contact .u{margin:12px auto 18px}
+  .contact .sub{margin:0 auto 4px}
+  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--grey);font-size:.85rem;text-align:center}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">Salah <b>Laouina</b></span>
+    <div class="right">
+      <button class="tgl" id="lb" onclick="lg()" title="Français / English">EN</button>
+      <button class="tgl" id="tb" onclick="th()" title="Mode jour / nuit">☀</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Data &amp; Finance</div>
+    <h1 class="fr">Comptable de formation,<br>data par appétence.</h1>
+    <h1 class="en">An accountant by training,<br>data-driven by choice.</h1>
+    <div class="role fr">Master CCA · Power BI · Automatisation · IA</div>
+    <div class="role en">Master's in Accounting, Control &amp; Audit · Power BI · Automation · AI</div>
+    <p class="lead fr">Entre le comptable qui produit les chiffres et le dirigeant qui doit décider, il manque souvent un traducteur. C'est ce rôle que je veux jouer : allier la rigueur de la comptabilité à la puissance de la donnée.</p>
+    <p class="lead en">Between the accountant who produces the figures and the manager who has to decide, a translator is often missing. That is the role I want to play: combining accounting rigour with the power of data.</p>
+    <div class="stats">
+      <div class="stat"><b>Master CCA</b><span class="lbl fr">Comptabilité · Contrôle · Audit</span><span class="lbl en">Accounting · Control · Audit</span></div>
+      <div class="stat"><b>~60</b><span class="lbl fr">sociétés, environnement multi-entités</span><span class="lbl en">companies, multi-entity environment</span></div>
+      <div class="stat"><b>Power BI · VBA</b><span class="lbl fr">Power Query, DAX, macros</span><span class="lbl en">Power Query, DAX, macros</span></div>
+      <div class="stat"><b>7</b><span class="lbl fr">certifications Deloitte IFRS</span><span class="lbl en">Deloitte IFRS certificates</span></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2 class="fr">Réalisations<span class="u"></span></h2>
+    <h2 class="en">What I have built<span class="u"></span></h2>
+    <p class="sub fr">Trois travaux menés pendant mon alternance, à la frontière entre la production comptable et l'outil.</p>
+    <p class="sub en">Three pieces of work from my apprenticeship, at the boundary between accounting production and tooling.</p>
+
+    <div class="case fr">
+      <h3>Automatisation des contrôles de réciprocité intragroupe</h3>
+      <dl>
+        <dt>Contexte</dt>
+        <dd>Un groupe d'une soixantaine de sociétés, avec des opérations intragroupe à cadrer à chaque arrêté. Le contrôle se faisait manuellement, entité par entité.</dd>
+        <dt>Ce que j'ai construit</dt>
+        <dd>De ma propre initiative, un modèle Excel qui rapproche les comptes réciproques entre entités et fait ressortir automatiquement les écarts à traiter.</dd>
+        <dt>Résultat</dt>
+        <dd>Un contrôle fiabilisé et nettement accéléré : les écarts apparaissent immédiatement, au lieu d'être découverts au terme d'un pointage manuel.</dd>
+      </dl>
+    </div>
+    <div class="case en">
+      <h3>Automating intercompany reconciliation controls</h3>
+      <dl>
+        <dt>Context</dt>
+        <dd>A group of around sixty companies, with intercompany transactions to reconcile at every closing. The control was carried out manually, entity by entity.</dd>
+        <dt>What I built</dt>
+        <dd>On my own initiative, an Excel model that matches reciprocal accounts across entities and automatically highlights the differences to investigate.</dd>
+        <dt>Result</dt>
+        <dd>A more reliable and much faster control: differences show up immediately instead of being found at the end of a manual review.</dd>
+      </dl>
+    </div>
+
+    <div class="case fr">
+      <h3>Préconsolidation des comptes des filiales</h3>
+      <dl>
+        <dt>Contexte</dt>
+        <dd>Des filiales dont les comptes devaient être remontés et contrôlés pour préparer la consolidation du groupe.</dd>
+        <dt>Ce que j'ai fait</dt>
+        <dd>Collecte, saisie et contrôle des liasses de préconsolidation sous Amelkis, avec le cadrage des opérations intragroupe.</dd>
+        <dt>Résultat</dt>
+        <dd>Des données harmonisées entre entités et des incohérences identifiées avant la remontée.</dd>
+      </dl>
+    </div>
+    <div class="case en">
+      <h3>Pre-consolidation of subsidiary accounts</h3>
+      <dl>
+        <dt>Context</dt>
+        <dd>Subsidiary accounts had to be collected and checked in preparation for the group consolidation.</dd>
+        <dt>What I did</dt>
+        <dd>Collection, entry and control of pre-consolidation packages in Amelkis, together with the reconciliation of intercompany transactions.</dd>
+        <dt>Result</dt>
+        <dd>Harmonised data across entities, with inconsistencies identified before submission.</dd>
+      </dl>
+    </div>
+
+    <div class="case fr">
+      <h3>Dématérialisation et fiabilisation des données comptables</h3>
+      <dl>
+        <dt>Contexte</dt>
+        <dd>Un volume important de pièces à traiter sur un périmètre multi-entités, avec l'exigence d'une piste d'audit cohérente.</dd>
+        <dt>Ce que j'ai fait</dt>
+        <dd>Traitement des factures dématérialisées sous Yooz, contrôles de cohérence, justification et analyse des soldes.</dd>
+        <dt>Prolongement</dt>
+        <dd>Mon mémoire professionnel porte sur la facturation électronique et ses effets sur la fiabilité comptable, la piste d'audit et la TVA.</dd>
+      </dl>
+    </div>
+    <div class="case en">
+      <h3>Paperless processing and data reliability</h3>
+      <dl>
+        <dt>Context</dt>
+        <dd>A high volume of documents to process across several entities, with the requirement of a consistent audit trail.</dd>
+        <dt>What I did</dt>
+        <dd>Processing of paperless invoices in Yooz, consistency checks, justification and analysis of balances.</dd>
+        <dt>Going further</dt>
+        <dd>My professional dissertation deals with e-invoicing and its effects on accounting reliability, the audit trail and VAT.</dd>
+      </dl>
+    </div>
+
+    <div class="note fr">Les tableaux de bord ne sont pas publiés pour des raisons de confidentialité. Je les présente volontiers en entretien.</div>
+    <div class="note en">The dashboards are not published for confidentiality reasons. I am happy to present them at interview.</div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2 class="fr">Compétences<span class="u"></span></h2>
+    <h2 class="en">Skills<span class="u"></span></h2>
+    <div class="grid2">
+      <div class="card">
+        <h3 class="fr">Data &amp; outils</h3>
+        <h3 class="en">Data &amp; tools</h3>
+        <ul>
+          <li class="fr">Power BI : Power Query, mesures DAX, tableaux de bord</li>
+          <li class="en">Power BI: Power Query, DAX measures, dashboards</li>
+          <li class="fr">Excel avancé : TCD, recherches et formules, macros VBA</li>
+          <li class="en">Advanced Excel: pivot tables, lookups and formulas, VBA macros</li>
+          <li class="fr">IA générative : Claude, ChatGPT, Copilot, Mistral</li>
+          <li class="en">Generative AI: Claude, ChatGPT, Copilot, Mistral</li>
+          <li class="fr">Automatisation de contrôles et fiabilisation des données</li>
+          <li class="en">Control automation and data reliability</li>
+          <li class="fr">Python (bases) · SQL (en cours)</li>
+          <li class="en">Python (basics) · SQL (learning)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="fr">Comptabilité &amp; finance</h3>
+        <h3 class="en">Accounting &amp; finance</h3>
+        <ul>
+          <li class="fr">Tenue, révision des comptes généraux et auxiliaires</li>
+          <li class="en">Bookkeeping, review of general and subsidiary accounts</li>
+          <li class="fr">TVA (CA3), écritures d'inventaire, clôtures</li>
+          <li class="en">VAT returns, inventory entries, closings</li>
+          <li class="fr">Justification des soldes et contrôles de cohérence</li>
+          <li class="en">Balance justification and consistency checks</li>
+          <li class="fr">Préconsolidation sous Amelkis, opérations intragroupe</li>
+          <li class="en">Pre-consolidation in Amelkis, intercompany transactions</li>
+          <li class="fr">Normes IFRS (7 certificats Deloitte)</li>
+          <li class="en">IFRS (7 Deloitte certificates)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3 class="fr">Ma façon d'utiliser l'IA</h3>
+      <h3 class="en">How I use AI</h3>
+      <ul>
+        <li class="fr">Elle accélère la production et la détection d'anomalies, elle ne décide pas.</li>
+        <li class="en">It speeds up production and anomaly detection, it does not decide.</li>
+        <li class="fr">Je vérifie ce qu'elle produit comme je pointe un compte : la responsabilité reste humaine.</li>
+        <li class="en">I check what it produces the way I tick an account: responsibility stays human.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="fr">Recherche<span class="u"></span></h2>
+    <h2 class="en">Research<span class="u"></span></h2>
+    <p class="sub fr">Mes travaux universitaires portent sur la transformation du métier comptable.</p>
+    <p class="sub en">My academic work focuses on how the accounting profession is changing.</p>
+    <div class="grid2">
+      <div class="card">
+        <h3 class="fr">Digitalisation de la comptabilité</h3>
+        <h3 class="en">Digital transformation of accounting</h3>
+        <ul>
+          <li class="fr">Mémoire de recherche : effets de l'automatisation, des données financières et des outils numériques sur l'évolution du métier.</li>
+          <li class="en">Research dissertation: the effects of automation, financial data and digital tools on how the profession evolves.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="fr">Facturation électronique</h3>
+        <h3 class="en">E-invoicing</h3>
+        <ul>
+          <li class="fr">Mémoire professionnel : impacts sur la fiabilité comptable, la piste d'audit fiable, la TVA et les pratiques d'audit.</li>
+          <li class="en">Professional dissertation: impacts on accounting reliability, the reliable audit trail, VAT and audit practices.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2 class="fr">Certifications Deloitte IFRS<span class="u"></span></h2>
+    <h2 class="en">Deloitte IFRS certificates<span class="u"></span></h2>
+    <p class="sub fr">Sept certificats obtenus sur les normes internationales d'information financière (2025-2026).</p>
+    <p class="sub en">Seven certificates on international financial reporting standards (2025-2026).</p>
+    <div class="certs">
+      <a class="cert" href="certifs/ias12-part1.pdf" target="_blank" rel="noopener"><div><div class="t">IAS 12 · 1</div><div class="d"><span class="fr">Impôts sur le résultat</span><span class="en">Income taxes</span></div></div><span class="go"><span class="fr">Voir le certificat →</span><span class="en">View certificate →</span></span></a>
+      <a class="cert" href="certifs/ias12-part2.pdf" target="_blank" rel="noopener"><div><div class="t">IAS 12 · 2</div><div class="d"><span class="fr">Impôts différés</span><span class="en">Deferred taxes</span></div></div><span class="go"><span class="fr">Voir le certificat →</span><span class="en">View certificate →</span></span></a>
+      <a class="cert" href="certifs/ifrs1.pdf" target="_blank" rel="noopener"><div><div class="t">IFRS 1</div><div class="d"><span class="fr">Première application</span><span class="en">First-time adoption</span></div></div><span class="go"><span class="fr">Voir le certificat →</span><span class="en">View certificate →</span></span></a>
+      <a class="cert" href="certifs/ifrs9-part1.pdf" target="_blank" rel="noopener"><div><div class="t">IFRS 9 · 1</div><div class="d"><span class="fr">Instruments financiers</span><span class="en">Financial instruments</span></div></div><span class="go"><span class="fr">Voir le certificat →</span><span class="en">View certificate →</span></span></a>
+      <a class="cert" href="certifs/ifrs9-part2.pdf" target="_blank" rel="noopener"><div><div class="t">IFRS 9 · 2</div><div class="d"><span class="fr">Décomptabilisation</span><span class="en">Derecognition</span></div></div><span class="go"><span class="fr">Voir le certificat →</span><span class="en">View certificate →</span></span></a>
+      <a class="cert" href="certifs/ifrs16.pdf" target="_blank" rel="noopener"><div><div class="t">IFRS 16</div><div class="d"><span class="fr">Contrats de location</span><span class="en">Leases</span></div></div><span class="go"><span class="fr">Voir le certificat →</span><span class="en">View certificate →</span></span></a>
+      <a class="cert" href="certifs/ifrs16-advanced.pdf" target="_blank" rel="noopener"><div><div class="t">IFRS 16 Advanced</div><div class="d"><span class="fr">Contrats de location (avancé)</span><span class="en">Leases (advanced)</span></div></div><span class="go"><span class="fr">Voir le certificat →</span><span class="en">View certificate →</span></span></a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="contact">
+      <h2 class="fr">Travaillons ensemble<span class="u"></span></h2>
+      <h2 class="en">Let's work together<span class="u"></span></h2>
+      <p class="sub fr">Je recherche un poste mêlant comptabilité, reporting et pilotage par la donnée, en cabinet comme en entreprise.</p>
+      <p class="sub en">I am looking for a role combining accounting, reporting and data-driven steering, in a firm or in a company.</p>
+      <div class="btnrow">
+        <a class="btn solid" href="CV_Salah_LAOUINA_Data_Finance.pdf" target="_blank" rel="noopener"><span class="fr">Télécharger mon CV</span><span class="en">Download my CV</span></a>
+        <a class="btn" href="mailto:laouinasalah@gmail.com">laouinasalah@gmail.com</a>
+        <a class="btn" href="https://linkedin.com/in/salah-laouina" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Salah Laouina · <span class="fr">Comptable &amp; Data · Master CCA</span><span class="en">Accounting &amp; Data · Master's in CCA</span></div>
+</footer>
+
+<script>
+function th(){
+  document.body.classList.toggle('day');
+  document.getElementById('tb').textContent = document.body.classList.contains('day') ? '🌙' : '☀';
+}
+function lg(){
+  document.body.classList.toggle('en-on');
+  var on = document.body.classList.contains('en-on');
+  document.getElementById('lb').textContent = on ? 'FR' : 'EN';
+  document.documentElement.lang = on ? 'en' : 'fr';
+}
+</script>
+</body>
+</html>
